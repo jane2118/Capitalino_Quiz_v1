@@ -1,0 +1,61 @@
+		.displayNone{
+			height:0px;
+			width:0px;
+			background:none;
+			background-size:0;
+	
+		}
+
+		*{
+			margin:0px;
+			padding:0px;
+		}
+		
+		#splashScreen{
+			position:fixed;
+			width:100%;
+			height:100%;
+			background:black;
+			background-size:100%;
+			z-index:100;
+		}
+		.splashImg{	
+			width:100%;
+			position:fixed;
+			text-align:center;
+			z-index:100;
+
+		}
+		
+		body{
+			padding:0px;
+		}
+		#bg-about{
+			width:100%;
+			height:80%;
+		}
+		#score{
+			width:40px;
+			text-align:center;
+			font-size:100%;
+			background-color:white;
+			color:black;
+		}
+		#question, #txt-username{
+			width:100%;
+			text-align:center;
+			font-size:20px;
+			background-color:white;
+			color:black;
+		}
+		#question1{
+			width:85%;
+			font-size:100%;
+			color:white;
+		}
+		#gameTimer{
+			width:15px;
+			text-align:center;
+			font-size:100%;
+			background-color:white;
+			color:black;

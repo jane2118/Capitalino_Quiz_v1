@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Registration</title>
+	
+		<script type="text/javascript" src="js/jq.js"></script>
+			<link href="css/bootstrap.css" rel="stylesheet" />
+			<link href="css/prettify.css" rel="stylesheet" />
+			<link href="css/bootstrap-responsive.css" rel="stylesheet" />
+			<link href="css/bootstrap-modal.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+		<div class="modal-header"> 
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<img src="img/header-login.jpg">
+		</div>
+		
+		<div class="modal-body">
+			<center>
+				<div id="popuptext"></div>
+				<form role="form" id="regForm" action="javascript:verifyRegfirst()">
+					<h2>Sign up</h2>
+					<h2 id="regErrorMsg"></h2>
+					<input type="text" name="username" id="username" placeholder="username" required /><br />
+					<input type="email" name="email" id="uemail" placeholder="example@yahoo.com" required /><br />
+					<input type="password"  name="password" id="upassword" placeholder="password"/><br />
+					<input type="password"  id="ucpassword" placeholder="confirm password"/><br />
+					<input type="submit" value="Register" id="registerUser" class="btn btn-primary btn-lg btn-block"/>
+				</form>
+				<input  class="btn-main-menu btn btn-primary btn-lg btn-block" type="button" value="Main Menu" />
+			</center>
+		</div>
+		
+		<div class="modal-footer">
+		
+		</div>
+	</body>
+	
+	<script>
+		var rform = $("#regForm");
+			function verifyRegfirst(){
+				if($( "#username" ).val() == "" || $( "#upassword" ).val() == "" || $( "#uemail" ).val() == "" || $( "#ucpassword" ).val() == "")
+				{
+					$("#popuptext").html("<h2>Please Complete the Form</h2>");
+			
+				}else if($("#upassword").val() != $("#ucpassword").val())
+				{
+				$("#popuptext").html("<h2>Password did not match</h2>");
+			
+				}else{
+					$.getJSON("quiz_online_files/register_check.php?callback=?",rform.serialize(), function(data)
+				{
+					if (data.eexists == "exists")
+					{
+						$("#popuptext").html("<h6>The email address is already use.</h6>");
+					}
+					else if(data.uexists == "exists")
+					{
+						$("#popuptext").html("<h6>The username is already use</h6>");
+					}
+					else
+					{
+						$.getJSON("quiz_online_files/register_user.php?callback=?",rform.serialize(), function(data)
+						{
+							$("#username").val("");
+							$("#uemail").val("");
+							$("#upassword").val("");
+							$("#ucpassword").val("");
+							
+							$("#popuptext").html("<h6>Registration Complete!</h6>");
+							var a = window.localStorage.getItem("username");
+							if(a == "null" || a == "" || a == "undefined"){
+								alert("1");
+							}else{
+								alert("2");
+							}	
+						}).fail(function(){
+							$("#popuptext").html("<h6>Registration Failed!</h6>");
+						});
+					}
+				}).fail(function(data){	
+					$("#popuptext").html("<h6>Problem with your login, Please check internet connection or try again later.</h6>");		
+				});
+			}
+		}
+		
+	</script>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>Quiz</title>
+			<link href="css/bootstrap.css" rel="stylesheet" />
+			<link href="css/prettify.css" rel="stylesheet" />
+			<link href="css/bootstrap-responsive.css" rel="stylesheet" />
+			<link href="css/bootstrap-modal.css" rel="stylesheet" />
+	
+		<script type="text/javascript" src="js/jq.js"></script>
+		<link rel="stylesheet" href="css/style-custom.css">
+		<script type="text/javascript"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#testCorrect").click(function(){
+					$("#correct").fadeToggle();
+					setTimeout(function(){
+						$("#correct").fadeToggle();
+					},500);
+				});
+			});
+		</script>
+		<style>
+		.customModal{
+	
+				background:rgba(255,255,255,0.8);
+				position:fixed;
+				width:100%;
+				height:100%;
+				top:0;
+				left:0;
+				
+			}
+			.customModalContainer{
+				margin:0 auto;
+				margin-top:70%;
+				font-size:50px;
+				font-family:fantasy, Copperplate;
+				width:100%;
+				text-align:center;		
+			}
+		#correct{
+			position:fixed;
+			width:40%;
+			height:30%;
+			margin-top:20%;
+			left:30%;
+			text-align:center;
+			background:green;
+			display:none; 
+		}
+		.btn:focus, .btn:active:focus, .btn.active:focus{
+			background:#006dcc;
+			outline: none;
+			outline-offset: 0px;
+		}
+		#correct, #testArray{
+			display: none;
+		}
+		</style>
+
+	</head>
+	
+	<body onload="set()">
+		<div class="col-lg-12">
+			<br />
+			<br />
+			<br />
+		</div>
+		
+	
+		<div id="main_game_modal_container" class="modal hide fade" data-backdrop="static" tabindex="-1" data-keyboard="false"></div>
+		<div class="customModal" id="rsgTimerModal">
+			<div class="customModalContainer">
+				<div class="customModalContent">	
+					<p id="rsgTimer"> </p>
+				</div>
+			</div>
+		</div>
+		
+		<center>
+			<input type="text" name="" id="testArray"/>
+			
+			Score
+			
+			<input type="text" name="" id="score" placeholder="Player score" disabled/>
+			
+			
+	
+			<input type="text" name="" id="gameTimer" /><br /><!-- timer -->
+
+			<h1 name="" id="question"></h1>
+	
+			<input type="button" value="" id="choice1" class="btn-choice btn btn-primary btn-block"/>
+			<input type="button" value="" id="choice2" class="btn-choice btn btn-primary btn-block"/>
+			<input type="button" value="" id="choice3" class="btn-choice btn btn-primary btn-block"/>
+	
+			<br />
+			<input type="text" name="" id="correct" disabled/>
+			<br />
+
+			<input class="btn-main-menu btn btn-primary btn-lg btn-block" type="button" value="Main menu" /><br />
+	
+		</center>
+		
+		
+
+			<script type="text/javascript" src="js/jq-custom.js"></script>
+			<script src="js/jquery.min.js"></script>
+			<script type="text/javascript" src="js/prettify.js"></script>
+			<script src="js/bootstrap.js"></script>
+			<script src="js/bootstrap-modalmanager.js"></script>
+			<script src="js/bootstrap-modal.js"></script>
+
+			<script type="text/javascript">
+				$(document).ready(function(){	
+					startRsg();
+				});
+			</script>
+	</body>
+</html>
